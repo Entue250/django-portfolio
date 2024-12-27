@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}" />
+  </head>
+  <body>
+    <h1 class="container">Welcome to Our Portfolio</h1>
+    <div class="container">
+      <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        <a href="{% url 'about' %}" class="nav-link">About</a>
+        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+      </nav>
+    </div>
+    <div class="hero-section">
+      <div class="content">
+        <h1>
+          Hi there <span class="wave">👋</span>, We're <br /><span class="name"
+            >Gen-z Coders</span
+          >
+        </h1>
+        <h2>Full Stack Developer</h2>
+        <p>
+          We're a passionate team of Full Stack Developers dedicated to crafting
+          innovative and scalable digital solutions. Combining creativity,
+          technical expertise, and a user-first approach, we specialize in
+          building seamless, high-performing web applications that solve
+          real-world challenges. From dynamic front-end designs to robust
+          back-end architectures, we’re here to bring your vision to life. Let’s
+          create something amazing together!
+        </p>
+        <div class="buttons">
+          <a href="#" class="btn primary">📄 Our Resumes</a>
+          <a href="{% url 'contact' %}" class="btn secondary">✉️ Contact Us</a>
+        </div>
+      </div>
+      <div class="profile-image">
+        <img src="{% static 'images/Cdng.jpg' %}" alt="Programming Image" />
+      </div>
+    </div>
+  </body>
+</html>

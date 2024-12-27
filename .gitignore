@@ -1,0 +1,52 @@
+# Ignore the virtual environment
+myworld/
+
+# Ignore Python bytecode
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore Django static and media files
+staticfiles/
+media/
+
+*.sqlite3
+*.py[co]
+
+# Ignore sensitive files
+.env
+*.log
+
+# Ignore build files
+build/
+dist/
+*.egg-info/
+pip-log.txt
+
+# Other
+*.pot
+*.log
+*.sqlite3
+
+# Pytest and test-related files
+.coverage
+*.coverage.*
+.cache/
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+*.swp
+
+# Compiled Python files
+*.py[cod]
+
+# pip and package files
+pip-wheel-metadata/
+
+# Windows
+Thumbs.db
+Desktop.ini

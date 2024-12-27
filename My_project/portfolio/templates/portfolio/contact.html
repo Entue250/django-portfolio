@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <a href="{% url 'home' %}" class="nav-link">Home</a>
+        <a href="{% url 'about' %}" class="nav-link">About</a>
+        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
+      </nav>
+    </div>
+    <header>
+      <h1>Get In Touch</h1>
+      <p>Let's discuss how we can work together to bring your ideas to life.</p>
+    </header>
+    <section class="contact-container">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Contact Info</h2>
+        <div class="info-item">
+          <div class="icon">📧</div>
+          <p>Email:</p>
+          <span>portfolio@gmail.com</span>
+        </div>
+        <div class="info-item">
+          <div class="icon">📞</div>
+          <p>Phone:</p>
+          <span>(+250) 788 444 555</span>
+        </div>
+        <div class="info-item">
+          <div class="icon">📍</div>
+          <p>Location:</p>
+          <span>Musanze, Rwanda</span>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form id="contact-form">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your full name"
+            required
+          />
+
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email address"
+            required
+          />
+
+          <label for="reason">Reason for Contact</label>
+          <select id="reason" name="reason">
+            <option value="" disabled selected>Select a reason</option>
+            <option value="Job_Opportunity">Job Opportunity</option>
+            <option value="Project_Collaboration">Project Collaboration</option>
+            <option value="General_Questions">General Questions</option>
+            <option value="Feedback">Feedback</option>
+            <option value="Others">Others</option>
+          </select>
+
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button type="submit">Send Message</button>
+
+          <div id="success-message" style="display: none; color: green">
+            Message Sent Successfully
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script>
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const formData = new FormData(this);
+
+          fetch("{% url 'contact' %}", {
+            method: "POST",
+            headers: {
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                const successMessage =
+                  document.getElementById("success-message");
+                successMessage.style.display = "block";
+                successMessage.style.visibility = "visible"; // Ensure it's visible
+                successMessage.style.height = "auto"; // Adjust to content height
+                setTimeout(() => {
+                  successMessage.style.display = "none";
+                  document.getElementById("contact-form").reset();
+                }, 2000);
+              }
+            });
+        });
+    </script>
+  </body>
+</html>
