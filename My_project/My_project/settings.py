@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'members',
     'entue',
+    'django_distill',
     'portfolio'
 ]
 
